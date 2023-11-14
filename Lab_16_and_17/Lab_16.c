@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <Windows.h>
 #include <stdio.h>
 
@@ -217,6 +218,37 @@ int findIndexMin() {
     return indexMin;
 }
 
+void SaveArray() {
+    int i;
+
+    FILE* fin = fopen("C:\\Users\\Vika\\Desktop\\Универ\\OAiP\\Lab_16_and_17\\in.txt", "rt");
+    if (fin == NULL) {
+        printf("Входной файл не найден\n");
+        return;
+    }
+    fscanf(fin, "%d", &count);
+    for (i = 0; i < count; i += 1) {
+        fscanf(fin, "%d", &arr[i]);
+    }
+    fclose(fin);
+}
+
+void LocalArray() {
+    int i;
+
+    FILE* fout = fopen("C:\\Users\\Vika\\Desktop\\Универ\\OAiP\\Lab_16_and_17\\out.txt", "wt");
+    if (fout == NULL) {
+        printf("Выходной файл не создался\n");
+        return;
+    }
+
+    fprintf(fout, "%d\n", count);
+    for (i = 0; i < count; i += 1) {
+        fprintf(fout, "%d ", arr[i]);
+    }
+    fclose(fout);
+}
+
 
 
 void main() {
@@ -300,7 +332,7 @@ void main() {
 
             deleteElement(index);
         }
-            break;
+        break;
         case 14:
         {
             int index;
@@ -312,21 +344,21 @@ void main() {
 
             insertElement(index, value);
         }
-            break;
+        break;
         case 15:
         {
             int index_min = findIndexMin();
             printf("index min = %d\n", &index_min);
             deleteElement(index_min);
         }
-            break;
+        break;
         case 16:
         {
             int index_min = findIndexMin();
             printf("index min = %d\n", &index_min);
             insertElement(index_min, 0);
         }
-            break;
+        break;
         case 17:
         {
             for (int i = 0; i < count; i++) {
@@ -335,7 +367,7 @@ void main() {
                 }
             }
         }
-            break;
+        break;
         case 18:
         {
             for (int i = 0; i < count; i++) {
@@ -345,14 +377,14 @@ void main() {
                 }
             }
         }
-            break;
+        break;
         case 19:
         {
             int index_min = findIndexMin();
             int min = arr[index_min];
             insertElement(0, min);
         }
-            break;
+        break;
         case 20:
         {
             for (int i = 0; i < count; i++) {
@@ -361,6 +393,12 @@ void main() {
                 }
             }
         }
+        break;
+        case 21:
+            SaveArray();
+            break;
+        case 22:
+            LocalArray();
             break;
         }
     } while (item != 0);
