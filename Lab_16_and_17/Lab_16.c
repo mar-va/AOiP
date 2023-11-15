@@ -233,7 +233,7 @@ void SaveArray() {
     fclose(fin);
 }
 
-void LocalArray() {
+void LoadArray() {
     int i;
 
     FILE* fout = fopen("C:\\Users\\Vika\\Desktop\\Универ\\OAiP\\Lab_16_and_17\\out.txt", "wt");
@@ -398,7 +398,7 @@ void main() {
             SaveArray();
             break;
         case 22:
-            LocalArray();
+            LoadArray();
             break;
         }
     } while (item != 0);
