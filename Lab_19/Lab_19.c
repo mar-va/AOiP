@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+п»ї#define _CRT_SECURE_NO_WARNINGS
 #include <Windows.h>
 #include <stdio.h>
 
@@ -13,9 +13,9 @@ int *incomes;
 int count_incomes;
 
 void load() {
-	FILE* fin = fopen("C:\\Users\\Vika\\Desktop\\Универ\\OAiP\\Lab_19\\in1.txt", "rt");
+	FILE* fin = fopen("C:\\Users\\Vika\\Desktop\\РЈРЅРёРІРµСЂ\\OAiP\\Lab_19\\in1.txt", "rt");
 	if (fin == NULL) {
-		printf("Входной файл не найден\n");
+		printf("Р’С…РѕРґРЅРѕР№ С„Р°Р№Р» РЅРµ РЅР°Р№РґРµРЅ\n");
 		return;
 	}
 
@@ -44,9 +44,9 @@ void SaveResult() {
 		}
 	}
 
-	FILE* fout = fopen("C:\\Users\\Vika\\Desktop\\Универ\\OAiP\\Lab_19\\out1.txt", "wt");
+	FILE* fout = fopen("C:\\Users\\Vika\\Desktop\\РЈРЅРёРІРµСЂ\\OAiP\\Lab_19\\out1.txt", "wt");
 	if (fout == NULL) {
-		printf("Входной файл не найден\n");
+		printf("Р’С…РѕРґРЅРѕР№ С„Р°Р№Р» РЅРµ РЅР°Р№РґРµРЅ\n");
 		return;
 	}
 
@@ -61,9 +61,9 @@ void SaveResult() {
 }
 
 void load2() {
-	FILE* fin = fopen("C:\\Users\\Vika\\Desktop\\Универ\\OAiP\\Lab_19\\in1.txt", "rt");
+	FILE* fin = fopen("C:\\Users\\Vika\\Desktop\\РЈРЅРёРІРµСЂ\\OAiP\\Lab_19\\in1.txt", "rt");
 	if (fin == NULL) {
-		printf("Входной файл не найден\n");
+		printf("Р’С…РѕРґРЅРѕР№ С„Р°Р№Р» РЅРµ РЅР°Р№РґРµРЅ\n");
 		return;
 	}
 	fscanf(fin, "%d", &count);
@@ -93,9 +93,9 @@ void SaveResult2() {
 		}
 	}
 
-	FILE* fout = fopen("C:\\Users\\Vika\\Desktop\\Универ\\OAiP\\Lab_19\\out1.txt", "wt");
+	FILE* fout = fopen("C:\\Users\\Vika\\Desktop\\РЈРЅРёРІРµСЂ\\OAiP\\Lab_19\\out1.txt", "wt");
 	if (fout == NULL) {
-		printf("Входной файл не найден\n");
+		printf("Р’С…РѕРґРЅРѕР№ С„Р°Р№Р» РЅРµ РЅР°Р№РґРµРЅ\n");
 		return;
 	}
 
@@ -110,9 +110,9 @@ void SaveResult2() {
 }
 
 void load3() {
-	FILE* fin = fopen("C:\\Users\\Vika\\Desktop\\Универ\\OAiP\\Lab_19\\in3.txt", "rt");
+	FILE* fin = fopen("C:\\Users\\Vika\\Desktop\\РЈРЅРёРІРµСЂ\\OAiP\\Lab_19\\in3.txt", "rt");
 	if (fin == NULL) {
-		printf("Входной файл не найден\n");
+		printf("Р’С…РѕРґРЅРѕР№ С„Р°Р№Р» РЅРµ РЅР°Р№РґРµРЅ\n");
 		return;
 	}
 	fscanf(fin, "%d", &count_temp);
@@ -142,9 +142,9 @@ void SaveResult3() {
 		}
 	}
 
-	FILE* fout = fopen("C:\\Users\\Vika\\Desktop\\Универ\\OAiP\\Lab_19\\out3.txt", "wt");
+	FILE* fout = fopen("C:\\Users\\Vika\\Desktop\\РЈРЅРёРІРµСЂ\\OAiP\\Lab_19\\out3.txt", "wt");
 	if (fout == NULL) {
-		printf("Входной файл не найден\n");
+		printf("Р’С…РѕРґРЅРѕР№ С„Р°Р№Р» РЅРµ РЅР°Р№РґРµРЅ\n");
 		return;
 	}
 
@@ -158,9 +158,9 @@ void SaveResult3() {
 }
 
 void load4() {
-	FILE* fin = fopen("C:\\Users\\Vika\\Desktop\\Универ\\OAiP\\Lab_19\\in4.txt", "rt");
+	FILE* fin = fopen("C:\\Users\\Vika\\Desktop\\РЈРЅРёРІРµСЂ\\OAiP\\Lab_19\\in4.txt", "rt");
 	if (fin == NULL) {
-		printf("Входной файл не найден\n");
+		printf("Р’С…РѕРґРЅРѕР№ С„Р°Р№Р» РЅРµ РЅР°Р№РґРµРЅ\n");
 		return;
 	}
 	fscanf(fin, "%d", &count_incomes);
@@ -193,9 +193,9 @@ void SaveResult4() {
 		}
 	}
 
-	FILE* fout = fopen("C:\\Users\\Vika\\Desktop\\Универ\\OAiP\\Lab_19\\out4.txt", "wt");
+	FILE* fout = fopen("C:\\Users\\Vika\\Desktop\\РЈРЅРёРІРµСЂ\\OAiP\\Lab_19\\out4.txt", "wt");
 	if (fout == NULL) {
-		printf("Входной файл не найден\n");
+		printf("Р’С…РѕРґРЅРѕР№ С„Р°Р№Р» РЅРµ РЅР°Р№РґРµРЅ\n");
 		return;
 	}
 
@@ -212,21 +212,21 @@ void main() {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
-	printf("--------------------- ЗАДАЧА 1 ---------------------\n");
+	printf("--------------------- Р—РђР”РђР§Рђ 1 ---------------------\n");
 	load();
 	SaveResult();
 
-	printf("--------------------- ЗАДАЧА 2 ---------------------\n");
+	printf("--------------------- Р—РђР”РђР§Рђ 2 ---------------------\n");
 	load2();
 	SaveResult2();
 	free(pa);
 
-	printf("--------------------- ЗАДАЧА 3 ---------------------\n");
+	printf("--------------------- Р—РђР”РђР§Рђ 3 ---------------------\n");
 	load3();
 	SaveResult3();
 	free(temp);
 
-	printf("--------------------- ЗАДАЧА 4 ---------------------\n");
+	printf("--------------------- Р—РђР”РђР§Рђ 4 ---------------------\n");
 	load4();
 	SaveResult4();
 	free(incomes);
