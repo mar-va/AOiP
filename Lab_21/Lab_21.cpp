@@ -5,6 +5,9 @@
 #include <Windows.h>
 #include <stdio.h>
 
+int gold = 0;
+int steps = 0;
+
 #define N 10
 #define M 15
 #define WIDTH 30
@@ -61,10 +64,24 @@ void drawMap(HDC hdc) {
     }
     for (i = 0; i < 4; i += 1)
         DeleteObject(brush[i]);
+
+    char strC[80];
+    sprintf(strC, "steps=%d  gold=%d", steps, gold);
+
+    TCHAR  strWin[80];
+    OemToChar(strC, strWin);
+
+    HFONT hFont = CreateFont(HEIGHT, 0, 0, 0, 0, 0, 0, 0,
+        DEFAULT_CHARSET, 0, 0, 0, 0, L"Courier New");
+
+    SelectObject(hdc, hFont);
+    SetTextColor(hdc, RGB(0, 0, 128));
+
+    TextOut(hdc, 10, HEIGHT * N, (LPCWSTR)strWin, _tcslen(strWin));
+
+    DeleteObject(hFont);
 }
 
-int steps = 0;
-int gold = 0;
 
 void Left() {
     for (int i = 0; i < N; i += 1) {
