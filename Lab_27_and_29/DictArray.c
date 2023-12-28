@@ -1,7 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <string.h>
-#include <Windows.h>
-#include <stdio.h>
 #include "Dict.h"
 
 #define MAX_WORDS 10000

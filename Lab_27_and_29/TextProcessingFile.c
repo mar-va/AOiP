@@ -2,20 +2,18 @@
 #include <string.h>
 #include <time.h>
 #include <stdio.h>
+#include <Windows.h>
 
-#include "Dict.h"
+
+// Максимальная длина слова в словаре
+#define MAX_LEN_WORD 80
 
 int getNextDelim(FILE* fp, char token[]);
 int getNextWord(FILE* fp, char token[]);
 
-int LoadDictionary(char* filename);
-int TextProcessing(char* filenameIn, char* filenameOut);
 
 
 char filenameDict[] = "C:\\Users\\Vika\\Desktop\\Универ\\OAiP\\Lab_27\\dict1.txt";
-//char filenameIn[] = "C:\\Users\\Vika\\Desktop\\Универ\\OAiP\\Lab_27\\text1.txt"
-//char filenameOut[] = "C:\\Users\\Vika\\Desktop\\Универ\\OAiP\\Lab_27\\text1_out.html;
-//
 char filenameIn[] = "C:\\Users\\Vika\\Desktop\\Универ\\OAiP\\Lab_27\\Alice.txt";
 char filenameOut[] = "C:\\Users\\Vika\\Desktop\\Универ\\OAiP\\Lab_27\\Alice_out.html";
 
@@ -30,9 +28,6 @@ void main() {
 	// t0 - сколько прошло времени от старта программы до момента входа в функцию main()
 	long t0 = clock();
 	printf("t0 = %.3f sec \n", t0 / (float)CLOCKS_PER_SEC);
-
-	LoadDictionary(filenameDict);
-
 	// t1 - сколько прошло времени от старта программы до окончания загрузки словаря
 	int t1 = clock();
 	printf("t1 = %.3f sec \n", t1 / (float)CLOCKS_PER_SEC);
@@ -43,32 +38,29 @@ void main() {
 	long t2 = clock();
 	printf("t2 = %.3f sec \n", t2 / (float)CLOCKS_PER_SEC);
 
-	Destroy();
 
 	// t3 - сколько прошло времени от окончания конвертации текста до окончания уничтожения словаря 
 	long t3 = clock();
 
-
 	printf("t3 = %.3f sec \n", t3 / (float)CLOCKS_PER_SEC);
-	
+
 	printf("t1 - t0 = %.3f sec (Run time of dictionary loading)\n", (t1 - t0) / (float)CLOCKS_PER_SEC);
 	printf("t2 - t1 = %.3f sec (Run time of HTML generating)\n", (t2 - t1) / (float)CLOCKS_PER_SEC);
-	printf("t3 - t2 = %.3f sec (Run time of dictionary destroying )\n", (t3 - t2) / (float)CLOCKS_PER_SEC);
-
-	printf("t3 - t0 = %.3f sec (Run time TOTAL)\n", (t3 - t0) / (float)CLOCKS_PER_SEC);
+	printf("t3 - t2 = %.3f sec (Run time of dictionary destroying )\n", (t2 - t1) / (float)CLOCKS_PER_SEC);
 }
 
-int LoadDictionary(char* filename) {
+// Проверка, есть ли слово word в словаре, хранящемся в файле filenameDict
+int Member(char* word) {
 	// открыть файл
-	FILE* fin = fopen(filename, "rt");
+	FILE* fin = fopen(filenameDict, "rt");
 	if (fin == NULL) {
 		// если файл не смогли открыть - сообщаем об этом
-		printf("File %s doesn't opened!\n", filename);
+		printf("File %s doesn't opened!\n", filenameDict);
 		return 0;
 	}
 
-	Create();
 	char token[MAX_LEN_WORD + 1];
+
 
 	// пока не конец файла
 	while (!feof(fin)) {
@@ -77,13 +69,18 @@ int LoadDictionary(char* filename) {
 		}
 		// если есть слово - берем его
 		if (getNextWord(fin, token)) {
-			Insert(token);
+			if (strcmp(token, word) == 0) {
+				// Слово в файле есть!
+				fclose(fin);
+				return 1;
+			}
 		}
 	}
 	// Закрываем файл с текстом
 	fclose(fin);
-	return 1;
+	return 0;
 }
+
 
 int TextProcessing(char* filenameIn, char* filenameOut) {
 	// открыть файл
@@ -112,6 +109,8 @@ int TextProcessing(char* filenameIn, char* filenameOut) {
 	fprintf(fout, "<title>HTML Document</title>");
 	fprintf(fout, "</head>");
 	fprintf(fout, "<body>");
+
+
 
 	char token[MAX_LEN_WORD + 1];
 
@@ -147,6 +146,10 @@ int TextProcessing(char* filenameIn, char* filenameOut) {
 	return 1;
 }
 
+
+
+
+
 // Возвращает 0 - если ch - не буква.
 // Возвращает 1 - если ch - буква.
 // Корректно работает для латинских букв (с кодами < 128)
@@ -164,6 +167,11 @@ int isalpha_my(unsigned char ch) {
 
 	return 0;
 }
+
+
+
+
+int isalpha_my(unsigned char ch);
 
 // Возвращает 1 - если  из файла прочитан разделитель.
 // В этом случае в token возвращается строка, содержащая 
@@ -184,6 +192,7 @@ int getNextDelim(FILE* fp, char token[])
 	token[1] = '\0';
 	return 1;
 }
+
 
 // Возвращает 1 - если  из файла прочитано слово.
 // В этом случае в token возвращается строка, содержащая 
